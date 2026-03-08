@@ -116,3 +116,11 @@ let lines = [
 <source src="https://www.soundjay.com/button/sounds/button-09.mp3" type="audio/mpeg">
 </audio>
 <audio id="sound" loop>
+document.body.addEventListener("click", function () {
+  let audio = new Audio("sound.mp3");
+  audio.play();
+});
+  body{
+  background:#000000;
+  color:#00ff00;
+}
