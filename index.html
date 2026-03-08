@@ -6,11 +6,24 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
+
 body{
 background:black;
 color:#00ff00;
 font-family:monospace;
 padding:20px;
+overflow:hidden;
+}
+
+canvas{
+position:fixed;
+top:0;
+left:0;
+z-index:-1;
+}
+
+h2{
+text-align:center;
 }
 
 #terminal{
@@ -19,24 +32,10 @@ font-size:20px;
 margin-bottom:20px;
 }
 
-button{
-background:#00ff00;
-color:black;
-border:none;
-padding:12px 25px;
-font-weight:bold;
-cursor:pointer;
-font-size:18px;
-}
-
-.library{
+.contact{
 margin-top:40px;
 border-top:1px solid #00ff00;
 padding-top:20px;
-}
-
-.book{
-margin-top:15px;
 }
 
 a{
@@ -48,16 +47,17 @@ width:200px;
 border:2px solid #00ff00;
 margin-top:20px;
 }
+
 </style>
 </head>
 
 <body>
 
+<canvas id="matrix"></canvas>
+
 <h2>Samsoor Cyber Terminal</h2>
 
 <div id="terminal"></div>
-
-<button onclick="startSystem()">START SYSTEM</button>
 
 <audio id="sound" loop>
 <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_5c0c0a3b77.mp3?filename=keyboard-typing-14047.mp3" type="audio/mpeg">
@@ -65,37 +65,46 @@ margin-top:20px;
 
 <script>
 
+let ip = "Detecting...";
+
+fetch("https://api.ipify.org?format=json")
+.then(res=>res.json())
+.then(data=>{
+ip = data.ip;
+});
+
 let text =
-`ACCESSING SYSTEM...
-LOADING MODULES...
-SCANNING NETWORK...
+`ACCESSING GLOBAL NETWORK...
 BYPASSING FIREWALL...
-ACCESS GRANTED...
+SCANNING DEVICE...
+
+WARNING...
+DEVICE DATA DETECTED
+
+Scanning files...
+Accessing system storage...
+Checking network traffic...
+Collecting encrypted data...
+
+LOCATION DETECTED
+IP ADDRESS LOGGED
+
+WELCOME HACKER
 
 WELCOME TO SAMSOOR CYBER TERMINAL
-Owner: Samsoor
-Security Level: MAXIMUM
-Status: ONLINE
+OWNER: SAMSOOR
 
-Connecting to secure network...
-Decrypting files...
-System ready...
-Scanning devices...
-Collecting data...
-Tracking IP address...
-Uploading report...
-Process complete...
+GLOBAL CYBER MONITORING ACTIVE
 
-System monitoring active...
-Connection secured...
-Waiting for command...`;
+If you need secure communication
+Contact Samsoor Cyber Terminal
+
+Email: samsoor@gmail.com
+WhatsApp: +93 744 473 208
+
+WAITING FOR COMMAND...`;
 
 let i = 0;
-
-function startSystem(){
-
-let audio = document.getElementById("sound");
-audio.play();
 
 function type(){
 
@@ -110,23 +119,82 @@ setTimeout(type,40);
 
 }
 
+window.onload = function(){
+
+let audio = document.getElementById("sound");
+audio.play().catch(()=>{});
+
 type();
 
 }
 
+/* MATRIX EFFECT */
+
+let canvas = document.getElementById("matrix");
+let ctx = canvas.getContext("2d");
+
+canvas.height = window.innerHeight;
+canvas.width = window.innerWidth;
+
+let letters = "01";
+letters = letters.split("");
+
+let fontSize = 14;
+let columns = canvas.width/fontSize;
+
+let drops = [];
+
+for(let x = 0; x < columns; x++)
+drops[x] = 1;
+
+function draw(){
+
+ctx.fillStyle = "rgba(0,0,0,0.05)";
+ctx.fillRect(0,0,canvas.width,canvas.height);
+
+ctx.fillStyle = "#0F0";
+ctx.font = fontSize + "px monospace";
+
+for(let i = 0; i < drops.length; i++){
+
+let text = letters[Math.floor(Math.random()*letters.length)];
+
+ctx.fillText(text,i*fontSize,drops[i]*fontSize);
+
+if(drops[i]*fontSize > canvas.height && Math.random() > 0.975)
+drops[i] = 0;
+
+drops[i]++;
+
+}
+
+}
+
+setInterval(draw,33);
+
 </script>
 
-<div class="library">
+<div class="contact">
 
-<h2>📚 My Book Library</h2>
+<h2>GLOBAL CONTACT</h2>
 
-<div class="book">
-<p>📘 The Nice One</p>
-<a href="The nice one.pdf" download>Download Book</a>
+<p>Email:</p>
+<a href="mailto:samsoor@gmail.com">
+samsoor@gmail.com
+</a>
+
+<br><br>
+
+<p>WhatsApp:</p>
+<a href="https://wa.me/93744473208" target="_blank">
+Chat on WhatsApp +93 744 473 208
+</a>
+
+<p>Global cyber communication available 🌍</p>
+
 </div>
 
-<div class="book">
-<p>📗 البرکات مکیه</p>
-<a href="1- البرکات مکیه.pdf" download>Download Book</a>
-</div>
 <img src="file_0000000093d071fa883.png" alt="Samsoor Photo">
+
+</body>
+</html>
