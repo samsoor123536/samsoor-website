@@ -107,3 +107,30 @@ let lines = [
 <audio id="sound" controls>
 <source src="https://www.soundjay.com/mechanical/keyboard-typing-1.mp3" type="audio/mpeg">
 </audio>
+<audio id="sound" controls>
+<source src="https://interactive-examples.mdn.mozilla.net/media/cc0-audio/t-rex-roar.mp3" type="audio/mpeg">
+</audio>
+function startSystem(){
+
+let audio = document.getElementById("sound");
+audio.play();
+
+let index = 0;
+
+function showLine(){
+
+if(index < lines.length){
+
+document.getElementById("terminal").innerHTML += lines[index] + "<br>";
+
+index++;
+
+setTimeout(showLine,800);
+
+}
+
+}
+
+showLine();
+
+}
