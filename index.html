@@ -98,3 +98,39 @@ setInterval(draw,33);
 
 </body>
 </html>
+<audio id="sound" autoplay loop>
+<source src="https://www.soundjay.com/mechanical/keyboard-1.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+
+let text = [
+"Initializing hack module...",
+"Scanning global network...",
+"Bypassing firewall...",
+"Access granted...",
+"Welcome to Samsoor Cyber Terminal"
+];
+
+let i = 0;
+let j = 0;
+
+function type(){
+if(i < text.length){
+if(j < text[i].length){
+document.getElementById("terminal").innerHTML += text[i].charAt(j);
+j++;
+setTimeout(type,50);
+}
+else{
+document.getElementById("terminal").innerHTML += "<br>";
+i++;
+j=0;
+setTimeout(type,500);
+}
+}
+}
+
+type();
+
+</script>
