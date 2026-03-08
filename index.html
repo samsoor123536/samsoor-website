@@ -5,110 +5,65 @@
 
 <style>
 body{
-margin:0;
 background:black;
 color:#00ff00;
 font-family:monospace;
 overflow:hidden;
 }
 
-#terminal{
-position:absolute;
-top:20px;
-left:20px;
-font-size:20px;
-z-index:2;
-}
-
 canvas{
-position:absolute;
+position:fixed;
 top:0;
 left:0;
+z-index:-1;
 }
 
-button{
-position:fixed;
-top:20px;
-right:20px;
-padding:10px;
-background:black;
-color:lime;
-border:1px solid lime;
-font-family:monospace;
-cursor:pointer;
+#text{
+padding:20px;
+font-size:18px;
 }
 </style>
 </head>
 
 <body>
 
-<div id="terminal"></div>
-
-<button onclick="playSound()">START SOUND</button>
-
-<audio id="sound" loop>
-<source src="https://www.soundjay.com/mechanical/keyboard-1.mp3" type="audio/mpeg">
-</audio>
-
 <canvas id="matrix"></canvas>
 
+<div id="text">
+ACCESSING SYSTEM...<br>
+LOADING MODULES...<br>
+SCANNING NETWORK...<br>
+BYPASSING FIREWALL...<br>
+ACCESS GRANTED...<br><br>
+
+WELCOME TO SAMSOOR CYBER TERMINAL<br>
+Owner: Samsoor<br>
+Security Level: MAXIMUM<br>
+Status: ONLINE
+</div>
+
+<audio autoplay loop>
+<source src="https://www.soundjay.com/mechanical/keyboard-typing-1.mp3" type="audio/mpeg">
+</audio>
+
 <script>
+var c=document.getElementById("matrix");
+var ctx=c.getContext("2d");
 
-// TERMINAL TEXT
-let text = [
-"ACCESSING SYSTEM...",
-"LOADING MODULES...",
-"SCANNING NETWORK...",
-"BYPASSING FIREWALL...",
-"ACCESS GRANTED...",
-"WELCOME TO SAMSOOR CYBER TERMINAL"
-];
+c.height=window.innerHeight;
+c.width=window.innerWidth;
 
-let i = 0;
-let j = 0;
+var letters="01";
+letters=letters.split("");
 
-function type(){
-if(i < text.length){
-
-if(j < text[i].length){
-document.getElementById("terminal").innerHTML += text[i].charAt(j);
-j++;
-setTimeout(type,40);
-}
-
-else{
-document.getElementById("terminal").innerHTML += "<br>";
-i++;
-j=0;
-setTimeout(type,400);
-}
-
-}
-}
-
-type();
-
-
-// MATRIX EFFECT
-var c = document.getElementById("matrix");
-var ctx = c.getContext("2d");
-
-c.height = window.innerHeight;
-c.width = window.innerWidth;
-
-var letters = "010101010101";
-letters = letters.split("");
-
-var font_size = 14;
-var columns = c.width/font_size;
-
+var font_size=14;
+var columns=c.width/font_size;
 var drops=[];
 
 for(var x=0;x<columns;x++)
 drops[x]=1;
 
 function draw(){
-
 ctx.fillStyle="rgba(0,0,0,0.05)";
 ctx.fillRect(0,0,c.width,c.height);
 
@@ -116,12 +71,10 @@ ctx.fillStyle="#0F0";
 ctx.font=font_size+"px monospace";
 
 for(var i=0;i<drops.length;i++){
-
 var text=letters[Math.floor(Math.random()*letters.length)];
-
 ctx.fillText(text,i*font_size,drops[i]*font_size);
 
-if(drops[i]*font_size>c.height && Math.random()>0.975)
+if(drops[i]*font_size>c.height&&Math.random()>0.975)
 drops[i]=0;
 
 drops[i]++;
@@ -129,13 +82,6 @@ drops[i]++;
 }
 
 setInterval(draw,33);
-
-
-// SOUND
-function playSound(){
-document.getElementById("sound").play();
-}
-
 </script>
 
 </body>
