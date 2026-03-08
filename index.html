@@ -134,3 +134,12 @@ setTimeout(type,500);
 type();
 
 </script>
+<audio id="sound" loop>
+<source src="https://www.soundjay.com/mechanical/keyboard-1.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+document.body.addEventListener("click", function(){
+document.getElementById("sound").play();
+});
+</script>
