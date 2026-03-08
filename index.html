@@ -1,72 +1,100 @@
 <!DOCTYPE html>
 <html>
 <head>
-
-<title>Samsoor | Hacker</title>
+<title>Samsoor Cyber Terminal</title>
 
 <style>
-
 body{
+margin:0;
 background:black;
 color:#00ff00;
 font-family:monospace;
-text-align:center;
+overflow:hidden;
 }
 
-h1{
-font-size:40px;
+#terminal{
+position:absolute;
+top:20px;
+left:20px;
+font-size:20px;
+z-index:2;
 }
 
-img{
-width:200px;
-border-radius:50%;
-border:3px solid #00ff00;
-margin-top:20px;
+canvas{
+position:absolute;
+top:0;
+left:0;
 }
-
-.box{
-margin-top:40px;
-}
-
 </style>
 
 </head>
 
 <body>
 
-<h1>WELCOME TO SAMSOOR HACKER WEBSITE</h1>
+<div id="terminal"></div>
 
-<img src="photo.jpg">
+<audio autoplay loop>
+<source src="https://www.soundjay.com/mechanical/keyboard-1.mp3">
+</audio>
 
-<div class="box">
+<canvas id="matrix"></canvas>
 
-<h2>About Me</h2>
+<script>
 
-<p>Hello, my name is Samsoor.</p>
-<p>I am from Afghanistan.</p>
-<p>I am a Termux user and computer learner.</p>
-<p>I create websites and learn cyber security.</p>
+var text = "ACCESSING SYSTEM...\nLOADING MODULES...\nWELCOME TO SAMSOOR CYBER NETWORK...";
+var i=0;
 
-</div>
+function type(){
+if(i<text.length){
+document.getElementById("terminal").innerHTML+=text.charAt(i);
+i++;
+setTimeout(type,50);
+}
+}
 
-<div class="box">
+type();
 
-<h2>Skills</h2>
+var c = document.getElementById("matrix");
+var ctx = c.getContext("2d");
 
-<p>• Termux User</p>
-<p>• Website Developer</p>
-<p>• Computer Skills</p>
+c.height = window.innerHeight;
+c.width = window.innerWidth;
 
-</div>
+var letters = "010101010101";
+letters = letters.split("");
 
-<div class="box">
+var font_size = 14;
+var columns = c.width/font_size;
 
-<h2>Contact</h2>
+var drops=[];
 
-<p>Email: Samsoorbaba4@gmail.com</p>
-<p>WhatsApp: 0744473208</p>
+for(var x=0;x<columns;x++)
+drops[x]=1;
 
-</div>
+function draw(){
+
+ctx.fillStyle="rgba(0,0,0,0.05)";
+ctx.fillRect(0,0,c.width,c.height);
+
+ctx.fillStyle="#0F0";
+ctx.font=font_size+"px monospace";
+
+for(var i=0;i<drops.length;i++){
+
+var text=letters[Math.floor(Math.random()*letters.length)];
+
+ctx.fillText(text,i*font_size,drops[i]*font_size);
+
+if(drops[i]*font_size>c.height && Math.random()>0.975)
+drops[i]=0;
+
+drops[i]++;
+}
+}
+
+setInterval(draw,33);
+
+</script>
 
 </body>
 </html>
