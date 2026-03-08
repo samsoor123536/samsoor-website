@@ -9,19 +9,22 @@ background:black;
 color:#00ff00;
 font-family:monospace;
 margin:0;
-overflow:hidden;
+padding:20px;
 }
 
 #terminal{
-padding:20px;
 font-size:18px;
+margin-bottom:20px;
 }
 
 button{
 background:#00ff00;
+color:black;
 border:none;
-padding:10px;
+padding:10px 20px;
 font-weight:bold;
+font-family:monospace;
+cursor:pointer;
 }
 </style>
 </head>
@@ -30,44 +33,53 @@ font-weight:bold;
 
 <div id="terminal"></div>
 
-<button onclick="startHack()">START SYSTEM</button>
+<button onclick="startSystem()">START SYSTEM</button>
 
-<audio id="sound" loop>
+<audio id="sound">
 <source src="https://www.soundjay.com/mechanical/keyboard-typing-1.mp3" type="audio/mpeg">
 </audio>
 
 <script>
 
-var lines=[
+let lines = [
 "ACCESSING SYSTEM...",
 "LOADING MODULES...",
 "SCANNING NETWORK...",
 "BYPASSING FIREWALL...",
-"ACCESS GRANTED",
+"ACCESS GRANTED...",
 "",
 "WELCOME TO SAMSOOR CYBER TERMINAL",
 "Owner: Samsoor",
 "Security Level: MAXIMUM",
-"Status: ONLINE"
+"Status: ONLINE",
+"",
+"Connecting to secure network...",
+"Decrypting files...",
+"System ready..."
 ];
 
-var i=0;
+let index = 0;
 
-function startHack(){
+function startSystem(){
 
 document.getElementById("sound").play();
 
-var terminal=document.getElementById("terminal");
+function showLine(){
 
-function typeLine(){
-if(i<lines.length){
-terminal.innerHTML+=lines[i]+"<br>";
-i++;
-setTimeout(typeLine,800);
-}
+if(index < lines.length){
+
+document.getElementById("terminal").innerHTML += lines[index] + "<br>";
+
+index++;
+
+setTimeout(showLine,700);
+
 }
 
-typeLine();
+}
+
+showLine();
+
 }
 
 </script>
