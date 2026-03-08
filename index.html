@@ -1,29 +1,61 @@
-<!DOCTYPE html><html>
+<!DOCTYPE html>
+<html>
 <head>
-<title>Samsoor Cyber Terminal</title><style>
+<title>Samsoor Cyber Terminal</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
 body{
 background:black;
 color:#00ff00;
 font-family:monospace;
 padding:20px;
 }
+
 #terminal{
 white-space:pre-line;
-font-size:18px;
+font-size:20px;
+margin-bottom:20px;
 }
+
 button{
 background:#00ff00;
 color:black;
 border:none;
-padding:10px 20px;
+padding:12px 25px;
 font-weight:bold;
 cursor:pointer;
+font-size:18px;
 }
-</style></head><body><div id="terminal"></div><button onclick="startSystem()">START SYSTEM</button>
+
+.library{
+margin-top:40px;
+border-top:1px solid #00ff00;
+padding-top:20px;
+}
+
+.book{
+margin-top:15px;
+}
+
+a{
+color:#00ff00;
+}
+</style>
+</head>
+
+<body>
+
+<div id="terminal"></div>
+
+<button onclick="startSystem()">START SYSTEM</button>
 
 <audio id="sound" loop>
-<source src="https://www.soundjay.com/mechanical/keyboard-typing-1.mp3" type="audio/mpeg">
-</audio><script>
+<source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_5c0c0a3b77.mp3?filename=keyboard-typing-14047.mp3" type="audio/mpeg">
+</audio>
+
+<script>
 
 let text =
 `ACCESSING SYSTEM...
@@ -74,42 +106,18 @@ type();
 
 }
 
-</script></body>
+</script>
+
+<div class="library">
+
+<h2>📚 My Book Library</h2>
+
+<div class="book">
+<p>Fkiul Masir Book</p>
+<a href="fkiul masir.pdf" download>Download Book</a>
+</div>
+
+</div>
+
+</body>
 </html>
-<audio id="sound" loop>
-<source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_5c0c0a3b77.mp3?filename=keyboard-typing-14047.mp3" type="audio/mpeg">
-</audio>
-document.body.addEventListener("click", function(){
-document.getElementById("sound").play();
-});
-document.querySelector("button").addEventListener("click", function(){
-let audio = document.getElementById("sound");
-audio.muted = false;
-audio.play();
-});
-function runCommand(cmd){
-let terminal = document.getElementById("terminal");
-
-if(cmd === "help"){
-terminal.innerHTML += "<br>Commands: help, about, status, clear";
-}
-
-else if(cmd === "about"){
-terminal.innerHTML += "<br>Samsoor Cyber Terminal Demo";
-}
-
-else if(cmd === "status"){
-terminal.innerHTML += "<br>System status: ONLINE";
-}
-
-else if(cmd === "clear"){
-terminal.innerHTML = "";
-}
-
-else{
-terminal.innerHTML += "<br>Unknown command";
-}
-}
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<h2>My Book</h2>
-<a href="fkiul masir.pdf">Download Book</a>
