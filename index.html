@@ -7,12 +7,10 @@ color:#00ff00;
 font-family:monospace;
 padding:20px;
 }
-
 #terminal{
-font-size:18px;
 white-space:pre-line;
+font-size:18px;
 }
-
 button{
 background:#00ff00;
 color:black;
@@ -46,7 +44,11 @@ Scanning devices...
 Collecting data...
 Tracking IP address...
 Uploading report...
-Process complete...`;
+Process complete...
+
+System monitoring active...
+Connection secured...
+Waiting for command...`;
 
 let i = 0;
 
@@ -63,10 +65,6 @@ document.getElementById("terminal").innerHTML += text.charAt(i);
 i++;
 
 setTimeout(type,40);
-
-}else{
-
-audio.pause();
 
 }
 
