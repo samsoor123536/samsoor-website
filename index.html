@@ -2,16 +2,14 @@
 <head>
 <title>Samsoor Cyber Terminal</title><style>
 body{
-background:#000;
+background:black;
 color:#00ff00;
 font-family:monospace;
-margin:0;
 padding:20px;
 }
 
 #terminal{
 font-size:18px;
-margin-bottom:20px;
 white-space:pre-line;
 }
 
@@ -21,176 +19,62 @@ color:black;
 border:none;
 padding:10px 20px;
 font-weight:bold;
-font-family:monospace;
 cursor:pointer;
 }
 </style></head><body><div id="terminal"></div><button onclick="startSystem()">START SYSTEM</button>
 
-<audio id="sound" src="https://www.soundjay.com/mechanical/keyboard-typing-1.mp3"></audio>
+<audio id="sound" loop>
+<source src="https://www.soundjay.com/mechanical/keyboard-typing-1.mp3" type="audio/mpeg">
+</audio><script>
 
-<script>
+let text =
+`ACCESSING SYSTEM...
+LOADING MODULES...
+SCANNING NETWORK...
+BYPASSING FIREWALL...
+ACCESS GRANTED...
 
-let lines = [
-"ACCESSING SYSTEM...",
-"LOADING MODULES...",
-"SCANNING NETWORK...",
-"BYPASSING FIREWALL...",
-"ACCESS GRANTED...",
-"",
-"WELCOME TO SAMSOOR CYBER TERMINAL",
-"Owner: Samsoor",
-"Security Level: MAXIMUM",
-"Status: ONLINE",
-"",
-"Connecting to secure network...",
-"Decrypting files...",
-"System ready...",
-"Scanning devices...",
-"Collecting data...",
-"Tracking IP address...",
-"Uploading report...",
-"Process complete..."
-];
+WELCOME TO SAMSOOR CYBER TERMINAL
+Owner: Samsoor
+Security Level: MAXIMUM
+Status: ONLINE
 
-let index = 0;
+Connecting to secure network...
+Decrypting files...
+System ready...
+Scanning devices...
+Collecting data...
+Tracking IP address...
+Uploading report...
+Process complete...`;
+
+let i = 0;
 
 function startSystem(){
 
 let audio = document.getElementById("sound");
 audio.play();
 
-function showLine(){
+function type(){
 
-if(index < lines.length){
+if(i < text.length){
 
-document.getElementById("terminal").innerHTML += lines[index] + "\n";
+document.getElementById("terminal").innerHTML += text.charAt(i);
+i++;
 
-index++;
+setTimeout(type,40);
 
-setTimeout(showLine,800);
+}else{
+
+audio.pause();
 
 }
 
 }
 
-showLine();
+type();
 
 }
 
 </script></body>
-<audio id="sound" controls>
-<source src="https://www.soundjay.com/mechanical/keyboard-typing-1.mp3" type="audio/mpeg">
-</audio>
-<audio id="sound" controls>
-<source src="https://interactive-examples.mdn.mozilla.net/media/cc0-audio/t-rex-roar.mp3" type="audio/mpeg">
-</audio>
-function startSystem(){
-
-let audio = document.getElementById("sound");
-audio.play();
-
-let index = 0;
-
-function showLine(){
-
-if(index < lines.length){
-
-document.getElementById("terminal").innerHTML += lines[index] + "<br>";
-
-index++;
-
-setTimeout(showLine,800);
-
-}
-
-}
-
-showLine();
-
-}
-<!DOCTYPE html>
-<html>
-<head>
-<title>Samsoor Cyber Terminal</title>
-
-<style>
-body{
-background:black;
-color:#00ff00;
-font-family:monospace;
-padding:20px;
-}
-#terminal{
-font-size:18px;
-margin-bottom:20px;
-}
-button{
-background:#00ff00;
-color:black;
-border:none;
-padding:10px 20px;
-font-weight:bold;
-}
-</style>
-</head>
-
-<body>
-
-<div id="terminal"></div>
-
-<button onclick="startSystem()">START SYSTEM</button>
-
-<audio id="sound" src="https://www.soundjay.com/mechanical/keyboard-typing-1.mp3"></audio>
-
-<script>
-
-let lines=[
-"ACCESSING SYSTEM...",
-"LOADING MODULES...",
-"SCANNING NETWORK...",
-"BYPASSING FIREWALL...",
-"ACCESS GRANTED...",
-"",
-"WELCOME TO SAMSOOR CYBER TERMINAL",
-"Owner: Samsoor",
-"Security Level: MAXIMUM",
-"Status: ONLINE",
-"",
-"Connecting to secure network...",
-"Decrypting files...",
-"System ready...",
-"Scanning devices...",
-"Collecting data...",
-"Tracking IP address...",
-"Uploading report...",
-"Process complete..."
-];
-
-let index=0;
-
-function startSystem(){
-
-document.getElementById("sound").play();
-
-function showLine(){
-
-if(index<lines.length){
-
-document.getElementById("terminal").innerHTML+=lines[index]+"<br>";
-
-index++;
-
-setTimeout(showLine,800);
-
-}
-
-}
-
-showLine();
-
-}
-
-</script>
-
-</body>
 </html>
