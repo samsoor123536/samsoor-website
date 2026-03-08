@@ -242,3 +242,34 @@ pdfjsLib.getDocument(url).promise.then(pdf => {
 <script>
 document.addEventListener('contextmenu', event => event.preventDefault());
 </script>
+<?php
+require __DIR__ . '/vendor/autoload.php'; // د Twilio لایبرري
+
+use Twilio\Rest\Client;
+
+// Twilio credentials
+$account_sid = 'ستاسې_Twilio_Account_SID';
+$auth_token  = 'ستاسې_Twilio_Auth_Token';
+$twilio_whatsapp_number = 'whatsapp:+14155238886'; // Twilio WhatsApp number
+$my_whatsapp_number     = 'whatsapp:+93XXXXXXXXX'; // خپل نمبر د افغانستان لپاره مثال
+
+// د لیدونکي آی پي او وخت
+$user_ip = $_SERVER['REMOTE_ADDR'];
+$time = date("Y-m-d H:i:s");
+
+// میسج جوړول
+$message = "ستاسې ویب‌سایټ ته نوی لیدونکی راغی! آی پي: $user_ip | وخت: $time";
+
+// Twilio client
+$client = new Client($account_sid, $auth_token);
+
+// میسج واستوي
+$client->messages->create(
+    $my_whatsapp_number,
+    [
+        'from' => $twilio_whatsapp_number,
+        'body' => $message
+    ]
+);
+
+?>
