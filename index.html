@@ -78,32 +78,6 @@ showLine();
 }
 
 </script></body>
-</html>
-let lines = [
-"ACCESSING SYSTEM...",
-"LOADING MODULES...",
-"SCANNING NETWORK...",
-"BYPASSING FIREWALL...",
-"ACCESS GRANTED...",
-"",
-"WELCOME TO SAMSOOR CYBER TERMINAL",
-"Owner: Samsoor",
-"Security Level: MAXIMUM",
-"Status: ONLINE",
-"",
-"Connecting to secure network...",
-"Decrypting files...",
-"System ready...",
-"Scanning devices...",
-"Collecting data...",
-"Tracking IP address...",
-"Uploading report...",
-"Process complete...",
-"Establishing remote access...",
-"Downloading data...",
-"Encrypting files...",
-"Mission completed..."
-];
 <audio id="sound" controls>
 <source src="https://www.soundjay.com/mechanical/keyboard-typing-1.mp3" type="audio/mpeg">
 </audio>
@@ -134,3 +108,89 @@ setTimeout(showLine,800);
 showLine();
 
 }
+<!DOCTYPE html>
+<html>
+<head>
+<title>Samsoor Cyber Terminal</title>
+
+<style>
+body{
+background:black;
+color:#00ff00;
+font-family:monospace;
+padding:20px;
+}
+#terminal{
+font-size:18px;
+margin-bottom:20px;
+}
+button{
+background:#00ff00;
+color:black;
+border:none;
+padding:10px 20px;
+font-weight:bold;
+}
+</style>
+</head>
+
+<body>
+
+<div id="terminal"></div>
+
+<button onclick="startSystem()">START SYSTEM</button>
+
+<audio id="sound" src="https://www.soundjay.com/mechanical/keyboard-typing-1.mp3"></audio>
+
+<script>
+
+let lines=[
+"ACCESSING SYSTEM...",
+"LOADING MODULES...",
+"SCANNING NETWORK...",
+"BYPASSING FIREWALL...",
+"ACCESS GRANTED...",
+"",
+"WELCOME TO SAMSOOR CYBER TERMINAL",
+"Owner: Samsoor",
+"Security Level: MAXIMUM",
+"Status: ONLINE",
+"",
+"Connecting to secure network...",
+"Decrypting files...",
+"System ready...",
+"Scanning devices...",
+"Collecting data...",
+"Tracking IP address...",
+"Uploading report...",
+"Process complete..."
+];
+
+let index=0;
+
+function startSystem(){
+
+document.getElementById("sound").play();
+
+function showLine(){
+
+if(index<lines.length){
+
+document.getElementById("terminal").innerHTML+=lines[index]+"<br>";
+
+index++;
+
+setTimeout(showLine,800);
+
+}
+
+}
+
+showLine();
+
+}
+
+</script>
+
+</body>
+</html>
