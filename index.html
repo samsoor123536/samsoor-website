@@ -82,3 +82,8 @@ type();
 document.body.addEventListener("click", function(){
 document.getElementById("sound").play();
 });
+document.querySelector("button").addEventListener("click", function(){
+let audio = document.getElementById("sound");
+audio.muted = false;
+audio.play();
+});
