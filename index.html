@@ -76,3 +76,9 @@ type();
 
 </script></body>
 </html>
+<audio id="sound" loop>
+<source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_5c0c0a3b77.mp3?filename=keyboard-typing-14047.mp3" type="audio/mpeg">
+</audio>
+document.body.addEventListener("click", function(){
+document.getElementById("sound").play();
+});
