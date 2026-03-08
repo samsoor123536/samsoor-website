@@ -25,35 +25,71 @@ position:absolute;
 top:0;
 left:0;
 }
-</style>
 
+button{
+position:fixed;
+top:20px;
+right:20px;
+padding:10px;
+background:black;
+color:lime;
+border:1px solid lime;
+font-family:monospace;
+cursor:pointer;
+}
+</style>
 </head>
 
 <body>
 
 <div id="terminal"></div>
 
-<audio autoplay loop>
-<source src="https://www.soundjay.com/mechanical/keyboard-1.mp3">
+<button onclick="playSound()">START SOUND</button>
+
+<audio id="sound" loop>
+<source src="https://www.soundjay.com/mechanical/keyboard-1.mp3" type="audio/mpeg">
 </audio>
 
 <canvas id="matrix"></canvas>
 
 <script>
 
-var text = "ACCESSING SYSTEM...\nLOADING MODULES...\nWELCOME TO SAMSOOR CYBER NETWORK...";
-var i=0;
+// TERMINAL TEXT
+let text = [
+"ACCESSING SYSTEM...",
+"LOADING MODULES...",
+"SCANNING NETWORK...",
+"BYPASSING FIREWALL...",
+"ACCESS GRANTED...",
+"WELCOME TO SAMSOOR CYBER TERMINAL"
+];
+
+let i = 0;
+let j = 0;
 
 function type(){
-if(i<text.length){
-document.getElementById("terminal").innerHTML+=text.charAt(i);
+if(i < text.length){
+
+if(j < text[i].length){
+document.getElementById("terminal").innerHTML += text[i].charAt(j);
+j++;
+setTimeout(type,40);
+}
+
+else{
+document.getElementById("terminal").innerHTML += "<br>";
 i++;
-setTimeout(type,50);
+j=0;
+setTimeout(type,400);
+}
+
 }
 }
 
 type();
 
+
+// MATRIX EFFECT
 var c = document.getElementById("matrix");
 var ctx = c.getContext("2d");
 
@@ -94,63 +130,13 @@ drops[i]++;
 
 setInterval(draw,33);
 
+
+// SOUND
+function playSound(){
+document.getElementById("sound").play();
+}
+
 </script>
 
 </body>
 </html>
-<audio id="sound" autoplay loop>
-<source src="https://www.soundjay.com/mechanical/keyboard-1.mp3" type="audio/mpeg">
-</audio>
-
-<script>
-
-let text = [
-"Initializing hack module...",
-"Scanning global network...",
-"Bypassing firewall...",
-"Access granted...",
-"Welcome to Samsoor Cyber Terminal"
-];
-
-let i = 0;
-let j = 0;
-
-function type(){
-if(i < text.length){
-if(j < text[i].length){
-document.getElementById("terminal").innerHTML += text[i].charAt(j);
-j++;
-setTimeout(type,50);
-}
-else{
-document.getElementById("terminal").innerHTML += "<br>";
-i++;
-j=0;
-setTimeout(type,500);
-}
-}
-}
-
-type();
-
-<button onclick="playSound()" style="
-position:fixed;
-top:20px;
-left:20px;
-padding:10px;
-background:black;
-color:lime;
-border:1px solid lime;
-font-family:monospace;
-">
-START SOUND
-</button>
-<script>
-function playSound(){
-  document.getElementById("sound").play();
-}
-</script>
-<audio id="sound" loop>
-<source src="https://www.soundjay.com/but
-ton/beep-07.mp3" type="audio/mpeg">
-</audio>
