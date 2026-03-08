@@ -1,18 +1,13 @@
-<!DOCTYPE html>
-<html>
-<head>
-<title>Samsoor Cyber Terminal</title>
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<style>
+<!DOCTYPE html><html>
+<head><title>Samsoor Cyber Terminal</title><meta name="viewport" content="width=device-width, initial-scale=1.0"><style>
 
 body{
 background:black;
 color:#00ff00;
 font-family:monospace;
 padding:20px;
-overflow:hidden;
+line-height:1.6;
+overflow-x:hidden;
 }
 
 canvas{
@@ -22,85 +17,72 @@ left:0;
 z-index:-1;
 }
 
-h2{
+h1{
 text-align:center;
+text-shadow:0 0 10px #00ff00;
 }
 
 #terminal{
 white-space:pre-line;
-font-size:20px;
-margin-bottom:20px;
+font-size:18px;
+margin-top:30px;
+background:#000;
+padding:20px;
+border:1px solid #00ff00;
+box-shadow:0 0 20px #00ff00;
 }
 
-.contact{
-margin-top:40px;
+.section{
+margin-top:50px;
 border-top:1px solid #00ff00;
 padding-top:20px;
 }
 
+.box{
+background:#000;
+padding:20px;
+border:1px solid #00ff00;
+box-shadow:0 0 15px #00ff00;
+}
+
 a{
 color:#00ff00;
+text-decoration:none;
 }
 
-img{
-width:200px;
-border:2px solid #00ff00;
-margin-top:20px;
+a:hover{
+color:#00ffff;
 }
 
-</style>
-</head>
+ul{
+list-style:none;
+padding:0;
+}
 
-<body>
+</style></head><body><canvas id="matrix"></canvas>
 
-<canvas id="matrix"></canvas>
-
-<h2>Samsoor Cyber Terminal</h2>
-
-<div id="terminal"></div>
-
-<audio id="sound" loop>
+<h1>SAMSOOR CYBER TERMINAL</h1><div id="terminal"></div><audio id="typing">
 <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_5c0c0a3b77.mp3?filename=keyboard-typing-14047.mp3" type="audio/mpeg">
-</audio>
+</audio><script>
 
-<script>
-
-let ip = "Detecting...";
-
-fetch("https://api.ipify.org?format=json")
-.then(res=>res.json())
-.then(data=>{
-ip = data.ip;
-});
+/* TERMINAL TEXT */
 
 let text =
-`ACCESSING GLOBAL NETWORK...
+`INITIALIZING GLOBAL CYBER NETWORK...
+
+LOADING SECURITY MODULES...
+CONNECTING TO CYBER GRID...
 BYPASSING FIREWALL...
-SCANNING DEVICE...
 
-WARNING...
-DEVICE DATA DETECTED
-
-Scanning files...
-Accessing system storage...
-Checking network traffic...
-Collecting encrypted data...
-
-LOCATION DETECTED
-IP ADDRESS LOGGED
+SCANNING VISITOR DEVICE...
 
 WELCOME HACKER
 
 WELCOME TO SAMSOOR CYBER TERMINAL
-OWNER: SAMSOOR
 
-GLOBAL CYBER MONITORING ACTIVE
+GLOBAL CYBER COMMUNICATION ACTIVE
 
-If you need secure communication
-Contact Samsoor Cyber Terminal
-
-Email: samsoor@gmail.com
-WhatsApp: +93 744 473 208
+STATUS: ACCESS GRANTED
 
 WAITING FOR COMMAND...`;
 
@@ -111,9 +93,10 @@ function type(){
 if(i < text.length){
 
 document.getElementById("terminal").innerHTML += text.charAt(i);
+
 i++;
 
-setTimeout(type,40);
+setTimeout(type,30);
 
 }
 
@@ -121,14 +104,13 @@ setTimeout(type,40);
 
 window.onload = function(){
 
-let audio = document.getElementById("sound");
-audio.play().catch(()=>{});
+document.getElementById("typing").play().catch(()=>{});
 
 type();
 
 }
 
-/* MATRIX EFFECT */
+/* MATRIX BACKGROUND */
 
 let canvas = document.getElementById("matrix");
 let ctx = canvas.getContext("2d");
@@ -136,7 +118,7 @@ let ctx = canvas.getContext("2d");
 canvas.height = window.innerHeight;
 canvas.width = window.innerWidth;
 
-let letters = "01";
+let letters = "01SAMSOORCYBER";
 letters = letters.split("");
 
 let fontSize = 14;
@@ -167,91 +149,24 @@ drops[i] = 0;
 drops[i]++;
 
 }
-<div id="terminal"></div>
 
-<style>
-body{
-background:black;
-color:#00ff00;
-font-family:monospace;
-font-size:18px;
-padding:20px;
-}
-</style>
-
-<script>
-var text = "Connecting to Global Cyber Network...\nAccess Granted\nWelcome to Samsoor Cyber Terminal\nLoading system...";
-var i = 0;
-
-function type(){
-if(i < text.length){
-document.getElementById("terminal").innerHTML += text.charAt(i);
-i++;
-setTimeout(type,50);
-}
 }
 
-type();
-</script>
-  <style>
-body{
-background:black;
-color:#00ff00;
-font-family:monospace;
-animation: glitch 0.3s infinite;
-}
+setInterval(draw,33);
 
-@keyframes glitch{
-0%{transform:translate(0)}
-20%{transform:translate(-2px,2px)}
-40%{transform:translate(-2px,-2px)}
-60%{transform:translate(2px,2px)}
-80%{transform:translate(2px,-2px)}
-100%{transform:translate(0)}
-}
-  </style>
-  <div class="scan"></div>
+/* VISITOR IP */
 
-<style>
-.scan{
-position:fixed;
-top:0;
-width:100%;
-height:2px;
-background:#00ff00;
-animation:scan 3s linear infinite;
-}
+fetch("https://api.ipify.org?format=json")
+.then(res=>res.json())
+.then(data=>{
+document.getElementById("terminal").innerHTML += "\n\nVISITOR IP: " + data.ip;
+});
 
-@keyframes scan{
-0%{top:0}
-100%{top:100%}
-}
-</style>
-}
-
-</script>
-
-<div class="contact">
-
-<h2>GLOBAL CONTACT</h2>
-
-<p>Email:</p>
-<a href="mailto:samsoor@gmail.com">
+</script><div class="section"><div class="box"><h2>📚 MY BOOKS</h2><ul><li><a href="book1.pdf" target="_blank">Download Book 1</a></li><li><a href="book2.pdf" target="_blank">Download Book 2</a></li><li><a href="book3.pdf" target="_blank">Download Book 3</a></li></ul></div></div><div class="section"><div class="box"><h2>🌍 GLOBAL CONTACT</h2><p>Email:</p><a href="mailto:samsoor@gmail.com">
 samsoor@gmail.com
-</a>
+</a><br><br>
 
-<br><br>
-
-<p>WhatsApp:</p>
-<a href="https://wa.me/93744473208" target="_blank">
-Chat on WhatsApp +93 744 473 208
-</a>
-
-<p>Global cyber communication available 🌍</p>
-
-</div>
-
-<img src="file_0000000093d071fa883.png" alt="Samsoor Photo">
-
-</body>
+<p>WhatsApp:</p><a href="https://wa.me/93744473208" target="_blank">
+Chat on WhatsApp
+</a><p>Secure cyber communication available worldwide.</p></div></div></body>
 </html>
