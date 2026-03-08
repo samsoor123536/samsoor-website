@@ -146,3 +146,28 @@ function playSound(){
 document.getElementById("sound").play();
 }
 </script>
+<audio id="sound" loop>
+<source src="https://www.soundjay.com/mechanical/sounds/keyboard-1.mp3" type="audio/mpeg">
+</audio>
+
+<button onclick="playSound()" style="
+position:fixed;
+top:20px;
+left:20px;
+padding:10px;
+background:black;
+color:lime;
+border:1px solid lime;
+font-family:monospace;
+">
+START SOUND
+</button>
+
+<script>
+function playSound(){
+document.getElementById("sound").play();
+}
+</script>
+
+</body>
+</html>
