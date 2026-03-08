@@ -1,11 +1,8 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE html><html>
 <head>
-<title>Samsoor Cyber Terminal</title>
-
-<style>
+<title>Samsoor Cyber Terminal</title><style>
 body{
-background:black;
+background:#000;
 color:#00ff00;
 font-family:monospace;
 margin:0;
@@ -15,6 +12,7 @@ padding:20px;
 #terminal{
 font-size:18px;
 margin-bottom:20px;
+white-space:pre-line;
 }
 
 button{
@@ -26,71 +24,12 @@ font-weight:bold;
 font-family:monospace;
 cursor:pointer;
 }
-</style>
-</head>
+</style></head><body><div id="terminal"></div><button onclick="startSystem()">START SYSTEM</button>
 
-<body>
-
-<div id="terminal"></div>
-
-<button onclick="startSystem()">START SYSTEM</button>
-
-<audio id="sound">
-<source src="https://www.soundjay.com/mechanical/keyboard-typing-1.mp3" type="audio/mpeg">
-</audio>
+<audio id="sound" src="https://www.soundjay.com/mechanical/keyboard-typing-1.mp3"></audio>
 
 <script>
 
-let lines = [
-"ACCESSING SYSTEM...",
-"LOADING MODULES...",
-"SCANNING NETWORK...",
-"BYPASSING FIREWALL...",
-"ACCESS GRANTED...",
-"",
-"WELCOME TO SAMSOOR CYBER TERMINAL",
-"Owner: Samsoor",
-"Security Level: MAXIMUM",
-"Status: ONLINE",
-"",
-"Connecting to secure network...",
-"Decrypting files...",
-"System ready..."
-];
-
-let index = 0;
-
-function startSystem(){
-
-document.getElementById("sound").play();
-
-function showLine(){
-
-if(index < lines.length){
-
-document.getElementById("terminal").innerHTML += lines[index] + "<br>";
-
-index++;
-
-setTimeout(showLine,700);
-
-}
-
-}
-
-showLine();
-
-}
-
-</script>
-
-</body>
-</html>
-<script>
-setTimeout(function(){
-document.body.innerHTML += "<br>TEST MESSAGE WORKING";
-},2000);
-</script>
 let lines = [
 "ACCESSING SYSTEM...",
 "LOADING MODULES...",
@@ -112,18 +51,31 @@ let lines = [
 "Uploading report...",
 "Process complete..."
 ];
-<audio id="sound">
-<source src="https://www.soundjay.com/button/sounds/button-09.mp3" type="audio/mpeg">
-</audio>
-<audio id="sound" loop>
-document.body.addEventListener("click", function () {
-  let audio = new Audio("sound.mp3");
-  audio.play();
-});
-  body{
-  background:#000000;
-  color:#00ff00;
+
+let index = 0;
+
+function startSystem(){
+
+let audio = document.getElementById("sound");
+audio.play();
+
+function showLine(){
+
+if(index < lines.length){
+
+document.getElementById("terminal").innerHTML += lines[index] + "\n";
+
+index++;
+
+setTimeout(showLine,800);
+
 }
-<audio id="sound" controls>
-<source src="https://www.soundjay.com/button/sounds/button-3.mp3" type="audio/mpeg">
-</audio>
+
+}
+
+showLine();
+
+}
+
+</script></body>
+</html>
