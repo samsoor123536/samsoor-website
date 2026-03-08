@@ -133,15 +133,6 @@ setTimeout(type,500);
 
 type();
 
-<script>
-function playSound(){
-document.getElementById("sound").play();
-}
-</script>
-<audio id="sound" loop>
-<source src="https://www.soundjay.com/mechanical/sounds/keyboard-1.mp3" type="audio/mpeg">
-</audio>
-
 <button onclick="playSound()" style="
 position:fixed;
 top:20px;
@@ -154,5 +145,14 @@ font-family:monospace;
 ">
 START SOUND
 </button>
+<script>
+function playSound(){
+  document.getElementById("sound").play();
+}
+</script>
+
+<audio id="sound" loop>
+<source src="https://www.soundjay.com/mechanical/keyboard-1.mp3" type="audio/mpeg">
+</audio>
 </body>
 </html>
