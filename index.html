@@ -223,3 +223,22 @@ Chat on WhatsApp
 
 </body>
 </html>
+<script src="https://mozilla.github.io/pdf.js/build/pdf.js"></script>
+<canvas id="pdfCanvas"></canvas>
+<script>
+const url = 'The%20nice%20one.pdf';
+const canvas = document.getElementById('pdfCanvas');
+const ctx = canvas.getContext('2d');
+
+pdfjsLib.getDocument(url).promise.then(pdf => {
+  pdf.getPage(1).then(page => {
+    const viewport = page.getViewport({scale:1.5});
+    canvas.height = viewport.height;
+    canvas.width = viewport.width;
+    page.render({canvasContext: ctx, viewport: viewport});
+  });
+});
+</script>
+<script>
+document.addEventListener('contextmenu', event => event.preventDefault());
+</script>
