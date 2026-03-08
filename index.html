@@ -87,3 +87,26 @@ let audio = document.getElementById("sound");
 audio.muted = false;
 audio.play();
 });
+function runCommand(cmd){
+let terminal = document.getElementById("terminal");
+
+if(cmd === "help"){
+terminal.innerHTML += "<br>Commands: help, about, status, clear";
+}
+
+else if(cmd === "about"){
+terminal.innerHTML += "<br>Samsoor Cyber Terminal Demo";
+}
+
+else if(cmd === "status"){
+terminal.innerHTML += "<br>System status: ONLINE";
+}
+
+else if(cmd === "clear"){
+terminal.innerHTML = "";
+}
+
+else{
+terminal.innerHTML += "<br>Unknown command";
+}
+}
