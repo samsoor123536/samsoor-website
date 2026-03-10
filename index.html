@@ -4,6 +4,9 @@
 <title>Samsoor Cyber Terminal</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<!-- Google Search Console verification -->
+<meta name="google-site-verification" content="دلته-به-ستاسو-اصلي-کوډ-واچوې" />
+
 <style>
 
 body{
@@ -80,7 +83,6 @@ padding:0;
 </audio>
 
 <script>
-
 let text =
 `INITIALIZING GLOBAL CYBER NETWORK...
 
@@ -165,64 +167,47 @@ document.getElementById("terminal").innerHTML += "\n\nVISITOR IP: " + data.ip;
 
 </script>
 
-
 <div class="section">
 <div class="box">
-
 <h2>📚 MY BOOKS</h2>
-
 <ul>
-
 <li>
 <a href="The%20nice%20one.pdf" target="_blank" download>
 Download Book 1
 </a>
 </li>
-
 <li>
 <a href="file_0000000093d071fa883.pdf" target="_blank" download>
 Download Book 2
 </a>
 </li>
-
 <li>
 <a href="البركات%20مكية-1.pdf" target="_blank" download>
 Download Book 3
 </a>
 </li>
-
 </ul>
-
 </div>
 </div>
-
 
 <div class="section">
 <div class="box">
-
 <h2>🌍 GLOBAL CONTACT</h2>
-
 <p>Email:</p>
-
 <a href="mailto:samsoor@gmail.com">
 samsoor@gmail.com
 </a>
 
 <br><br>
-
 <p>WhatsApp:</p>
-
 <a href="https://wa.me/93744473208" target="_blank">
 Chat on WhatsApp
 </a>
 
 <p>Secure cyber communication available worldwide.</p>
-
 </div>
 </div>
 
-</body>
-</html>
 <script src="https://mozilla.github.io/pdf.js/build/pdf.js"></script>
 <canvas id="pdfCanvas"></canvas>
 <script>
@@ -239,45 +224,10 @@ pdfjsLib.getDocument(url).promise.then(pdf => {
   });
 });
 </script>
+
 <script>
 document.addEventListener('contextmenu', event => event.preventDefault());
 </script>
-<?php
-require __DIR__ . '/vendor/autoload.php'; // د Twilio لایبرري
 
-use Twilio\Rest\Client;
-
-// Twilio credentials
-$account_sid = 'ستاسې_Twilio_Account_SID';
-$auth_token  = 'ستاسې_Twilio_Auth_Token';
-$twilio_whatsapp_number = 'whatsapp:+14155238886'; // Twilio WhatsApp number
-$my_whatsapp_number     = 'whatsapp:+93XXXXXXXXX'; // خپل نمبر د افغانستان لپاره مثال
-
-// د لیدونکي آی پي او وخت
-$user_ip = $_SERVER['REMOTE_ADDR'];
-$time = date("Y-m-d H:i:s");
-
-// میسج جوړول
-$message = "ستاسې ویب‌سایټ ته نوی لیدونکی راغی! آی پي: $user_ip | وخت: $time";
-
-// Twilio client
-$client = new Client($account_sid, $auth_token);
-
-// میسج واستوي
-$client->messages->create(
-    $my_whatsapp_number,
-    [
-        'from' => $twilio_whatsapp_number,
-        'body' => $message
-    ]
-);
-
-?>
-// localStorage مثال
-localStorage.setItem("username", "Samsoor");
-let user = localStorage.getItem("username");
-console.log(user); // Samsoor
-<head>
-<meta name="google-site-verification" content="XXXXXXXXXXXX" />
-<title>Samsoor Website</title>
-</head>
+</body>
+</html>
